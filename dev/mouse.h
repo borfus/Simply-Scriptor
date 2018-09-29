@@ -1,1 +1,2 @@
-void set_mouse_coords(int, int);
+void move_mouse(int, int);
+void scroll_wheel(int);
