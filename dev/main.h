@@ -1,2 +1,2 @@
-int monitor_x;
-int monitor_y;
+int resolution_width;
+int resolution_height;

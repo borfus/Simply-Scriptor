@@ -29,14 +29,42 @@ void setup_mouse_wheel()
     mouse_input.mi.time = 0;
 }
 
+void setup_mouse_leftclick_down()
+{
+    mouse_input.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+    mouse_input.type = INPUT_MOUSE;
+    mouse_input.mi.time = 0;
+}
+
+void setup_mouse_leftclick_up()
+{
+    mouse_input.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+    mouse_input.type = INPUT_MOUSE;
+    mouse_input.mi.time = 0;
+}
+
+void setup_mouse_rightclick_down()
+{
+    mouse_input.mi.dwFlags = MOUSEEVENTF_RIGHTDOWN;
+    mouse_input.type = INPUT_MOUSE;
+    mouse_input.mi.time = 0;
+}
+
+void setup_mouse_rightclick_up()
+{
+    mouse_input.mi.dwFlags = MOUSEEVENTF_RIGHTUP;
+    mouse_input.type = INPUT_MOUSE;
+    mouse_input.mi.time = 0;
+}
+
 float calculate_coord_percentage_x(int x)
 {
-    return (float)x / (float)monitor_x;
+    return (float)x / (float)resolution_width;
 }
 
 float calculate_coord_percentage_y(int y)
 {
-    return (float)y / (float)monitor_y;
+    return (float)y / (float)resolution_height;
 }
 
 void move_mouse(int x, int y)
@@ -65,4 +93,44 @@ void scroll_wheel(int x)
         send_mouse_input();
         Sleep(10);
     } 
+}
+
+void left_click()
+{
+    setup_mouse_leftclick_down();
+    send_mouse_input();
+    Sleep(10);
+    setup_mouse_leftclick_up();
+    send_mouse_input();
+    Sleep(10);
+}
+
+void right_click()
+{
+    setup_mouse_rightclick_down();
+    send_mouse_input();
+    Sleep(10);
+    setup_mouse_rightclick_up();
+    send_mouse_input();
+    Sleep(10);
+}
+
+void double_click()
+{
+    left_click();
+    left_click();
+}
+
+void left_click_hold()
+{
+    setup_mouse_leftclick_down();
+    send_mouse_input();
+    Sleep(10);
+}
+
+void left_click_release()
+{
+    setup_mouse_leftclick_up();
+    send_mouse_input();
+    Sleep(10);
 }
