@@ -99,10 +99,10 @@ void left_click()
 {
     setup_mouse_leftclick_down();
     send_mouse_input();
-    Sleep(10);
+    Sleep(20);
     setup_mouse_leftclick_up();
     send_mouse_input();
-    Sleep(10);
+    Sleep(20);
 }
 
 void right_click()
