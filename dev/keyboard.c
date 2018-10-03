@@ -61,15 +61,24 @@ void press_key(char key)
     send_keyboard_input();
 }
 
+int is_non_numeric_shift_symbol(char a)
+{
+    if (a == '~' || a == '_' || a == '+' || a == '{' || 
+        a == '}' || a == '|' || a == ':' || a == '"' || 
+        a == '<' || a == '>' || a == '?')
+    {
+        return 1;
+    }
+    return 0;
+}
+
 void type(char *words)
 {
     for (int i = 0; i < strlen(words); i++)
     {
         if ((words[i] >= 'A' && words[i] <= 'Z') || 
-           ((!isdigit(words[i]) && !isalpha(words[i])) &&
-           (words[i] == '~' || words[i] == '_' || words[i] == '+' || words[i] == '{' || 
-            words[i] == '}' || words[i] == '|' || words[i] == ':' || words[i] == '"' || 
-            words[i] == '<' || words[i] == '>' || words[i] == '?')))
+           ((!isdigit(words[i]) && !isalpha(words[i])) && 
+             is_non_numeric_shift_symbol(words[i])))
         {
             hold_shift();
             press_key(words[i]);

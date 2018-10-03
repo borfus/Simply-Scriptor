@@ -17,10 +17,10 @@ void get_resolution(int *horizontal, int *vertical)
 
 void run_script()
 {
-    move_mouse(889, 327);
+    move_mouse(500, 500);
     left_click();
-    type("HeLlO WoRlD1234567890!@#$%^&*()`~-_=+[{]}\\|;:'\",<.>/?");
-    //press_enter();
+    type("HeLlO WoRlD12345678901234567890`~-_=+[{]}\\|;:'\",<.>/?");
+    press_enter();
 }
 
 int main()
