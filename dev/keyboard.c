@@ -280,6 +280,18 @@ void press_enter()
     send_keyboard_input();
 }
 
+void press_function_key(int key)
+{
+    int fkey_base = 0x70;
+    setup_keyboard_press();
+    keyboard_input.ki.wVk = fkey_base + (key - 1);
+    send_keyboard_input();
+
+    keyboard_input.ki.dwFlags = KEYEVENTF_KEYUP;
+    send_keyboard_input();
+
+}
+
 void press_key(char key)
 {
     setup_keyboard_press();

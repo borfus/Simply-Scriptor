@@ -30,5 +30,6 @@ void press_left(void);
 void press_right(void);
 void press_escape(void);
 void press_enter(void);
+void press_function_key(int);
 void press_key(char);
 void type(char*);
