@@ -52,7 +52,7 @@ void release_shift()
     send_keyboard_input();
 }
 
-void hold_ctrl()
+void hold_control()
 {
     setup_keyboard_press();
     keyboard_input.ki.wVk = VK_CONTROL;
@@ -60,7 +60,7 @@ void hold_ctrl()
     send_keyboard_input();
 }
 
-void release_ctrl()
+void release_control()
 {
     setup_keyboard_press();
     keyboard_input.ki.wVk = VK_CONTROL;
@@ -210,6 +210,24 @@ void release_right()
     keyboard_input.ki.wVk = VK_RIGHT;
     keyboard_input.ki.dwFlags = KEYEVENTF_KEYUP;
     send_keyboard_input();
+}
+
+void press_shift()
+{
+    hold_shift();
+    release_shift();
+}
+
+void press_control()
+{
+    hold_control();
+    release_control();
+}
+
+void press_alt()
+{
+    hold_alt();
+    release_alt();
 }
 
 void press_capslock()
