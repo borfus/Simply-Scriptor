@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <Windows.h>
 #include "main.h"
 #include "mouse.h"
 #include "keyboard.h"
@@ -69,15 +70,18 @@ FILE* open_script(char *file_name)
     error("Error opening main script file.\nPlease check that main_script.txt is located in the same directory as Simply Scriptor.");
 }
 
+void grab_argument(char *command, int *x)
+{
+    sscanf(strchr(command, '('), "(%i)", x);
+}
+
+void grab_arguments(char *command, int *x, int *y)
+{
+    sscanf(strchr(command, '('), "(%i,%i)", x, y);
+}
+
 int check_command(char *command)
 {
-    //TODO: move_mouse(x, y)
-    //TODO: scroll_wheel(x)
-    //TODO: press_function_key(x)
-    //TODO: press_key(x)
-    //TODO: type(x)
-    //TODO: wait(x)
-    
     for (int i = 0; commands[i].command; i++)
     {
         if (strcmp(commands[i].command, command) == 0)
@@ -89,13 +93,66 @@ int check_command(char *command)
     return 0;
 }
 
+//TODO: really ugly; refactor this
 void run_script(FILE *script_file)
 {
-    char line[32];
+    //TODO: type(x)
     //TODO: loop amount
+    char line[32];
     while (fscanf(script_file, "%s\n", line) == 1)
     {
-        if(!check_command(line))
+        char *first_parentheses = strchr(line, '(');
+        char *second_parentheses = strchr(line, ')');
+        if (first_parentheses && second_parentheses)
+        {
+            if (strncmp(line, "move_mouse", strlen("move_mouse")) == 0 && 
+               (strcmp(second_parentheses, ")\n") == 0 || strcmp(second_parentheses, ")\0") == 0))
+            {
+                int x;
+                int y;
+                grab_arguments(line, &x, &y);
+                move_mouse(x, y);
+                continue;
+            }
+            else if (strncmp(line, "scroll_wheel", strlen("scroll_wheel")) == 0 && 
+                    (strcmp(second_parentheses, ")\n") == 0 || strcmp(second_parentheses, ")\0") == 0))
+            {
+                int x;
+                grab_argument(line, &x);
+                scroll_wheel(x);
+                continue;
+            }
+            else if (strncmp(line, "press_function_key", strlen("press_function_key")) == 0 && 
+                    (strcmp(second_parentheses, ")\n") == 0 || strcmp(second_parentheses, ")\0") == 0))
+            {
+                int x;
+                grab_argument(line, &x);
+                press_function_key(x);
+                continue;
+            }
+            else if (strncmp(line, "type", strlen("type")) == 0 && 
+                    (strcmp(line + strlen(line)-1, ")\n") == 0 || strcmp(line + strlen(line)-1, ")\0") == 0))
+            {
+                char x[1024];
+                sscanf(first_parentheses, "(%1023s)", x);
+                x[strlen(x)-1] = '\0';
+                type(x);
+                continue;
+            }
+            else if (strncmp(line, "wait", strlen("wait")) == 0 && 
+                    (strcmp(second_parentheses, ")\n") == 0 || strcmp(second_parentheses, ")\0") == 0))
+            {
+                int x;
+                grab_argument(line, &x);
+                Sleep(x);
+                continue;
+            }
+            else if (!check_command(line))
+            {
+                error("Unknown command given. Please check main_script.txt for spelling errors.");
+            }
+        }
+        else if (!check_command(line))
         {
             error("Unknown command given. Please check main_script.txt for spelling errors.");
         }

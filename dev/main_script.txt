@@ -1,8 +1,0 @@
-left_click
-press_enter
-press_enter
-press_tab
-press_tab
-press_tab
-press_backspace
-asd

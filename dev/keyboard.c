@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <Windows.h>
+#include "main.h"
 
 INPUT keyboard_input;
 
@@ -25,11 +26,13 @@ short convert_to_keycode(char *key)
     return VkKeyScan(converted_key);
 }
 
-int is_non_numeric_shift_symbol(char a)
+int is_shift_symbol(char a)
 {
     if (a == '~' || a == '_' || a == '+' || a == '{' || 
         a == '}' || a == '|' || a == ':' || a == '"' || 
-        a == '<' || a == '>' || a == '?')
+        a == '<' || a == '>' || a == '?' || a == '!' || 
+        a == '@' || a == '#' || a == '$' || a == '%' || 
+        a == '^' || a == '&' || a == '*' || a == '(' || a == ')')
     {
         return 1;
     }
@@ -300,14 +303,20 @@ void press_enter()
 
 void press_function_key(int key)
 {
-    int fkey_base = 0x70;
-    setup_keyboard_press();
-    keyboard_input.ki.wVk = fkey_base + (key - 1);
-    send_keyboard_input();
+    if (key >= 1 && key <= 12)
+    {
+        int fkey_base = 0x70;
+        setup_keyboard_press();
+        keyboard_input.ki.wVk = fkey_base + (key - 1);
+        send_keyboard_input();
 
-    keyboard_input.ki.dwFlags = KEYEVENTF_KEYUP;
-    send_keyboard_input();
-
+        keyboard_input.ki.dwFlags = KEYEVENTF_KEYUP;
+        send_keyboard_input();
+    }
+    else
+    {
+        error("Function key out of range 1-12. Please check main_script.txt for typos.");
+    }
 }
 
 void press_key(char key)
@@ -324,9 +333,7 @@ void type(char *words)
 {
     for (int i = 0; i < strlen(words); i++)
     {
-        if ((words[i] >= 'A' && words[i] <= 'Z') || 
-           ((!isdigit(words[i]) && !isalpha(words[i])) && 
-             is_non_numeric_shift_symbol(words[i])))
+        if ((words[i] >= 'A' && words[i] <= 'Z') || is_shift_symbol(words[i])) 
         {
             hold_shift();
             press_key(words[i]);
