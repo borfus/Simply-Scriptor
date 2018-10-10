@@ -5,7 +5,7 @@ Simply Scriptor is a lightweight, portable, all-purpose scripting program for Wi
 
 ## Instructions
 
-Fill out the main_script.txt file with commands and run Simply Scriptor. Make sure they are in the same directory!
+Fill out the main_script.txt file with commands and run Simply Scriptor. Make sure they are in the same directory! You can use [Mouse Recorder](https://github.com/borfus/Simply-Scriptor-Mouse-Recorder) to help generate mouse commands.
 
 Commands will be executed until the program doesn't recognize a command (through typos or otherwise) or until it reaches the end.
 
