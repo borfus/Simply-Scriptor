@@ -1,7 +1,7 @@
 void hold_shift(void);
 void release_shift(void);
-void hold_ctrl(void);
-void release_ctrl(void);
+void hold_control(void);
+void release_control(void);
 void hold_alt(void);
 void release_alt(void);
 void hold_capslock(void);
