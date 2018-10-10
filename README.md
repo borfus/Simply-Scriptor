@@ -2,7 +2,6 @@
 Simply Scriptor is a lightweight, portable, all-purpose scripting program for Windows. Simply Scriptor reads a list of commands from a text file and executes mouse and keyboard inputs based on the commands given.
 
 <img src="https://i.imgur.com/H5T43l2.gif" width="600" height="400" />
-<<<<<<< HEAD
 
 ## Instructions
 
@@ -63,10 +62,10 @@ press_right
 press_escape
 press_enter
 press_function_key(x) // 1 - 12
-type(x) 		      // press any button you can normally 'type' with. Example: type(Hello World!)
+type(x)               // press any button you can normally 'type' with. Example: type(Hello World!)
 
 Other Commands:
-wait(x)				  // Wait for x amount of miliseconds (Identical to Sleep(x) used from Windows.h)
+wait(x)               // Wait for x amount of miliseconds (Identical to Sleep(x) used from Windows.h)
 ```
 
 ## Disclaimer
@@ -74,5 +73,3 @@ wait(x)				  // Wait for x amount of miliseconds (Identical to Sleep(x) used fro
 I am not a senior programmer with 20+ years of experience. This program will probably have bugs! If you want to patiently submit bugs or make a pr, please feel free to do so!
 
 I do not condone cheating or any other malicious purpose this program might be used for. I am not responsible for your actions! Thank you!
-=======
->>>>>>> origin/master
