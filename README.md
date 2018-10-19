@@ -63,8 +63,8 @@ press_escape
 press_enter
 press_function_key(x) // 1 - 12
 type(x)               // press any button you can normally 'type' with. Example: type(HelloWorld!)
-					  // WARNING: Do not use a space here. If you want to press the spacebar use 
-					  // the "press_space" command instead.
+		      // WARNING: Do not use a space here. If you want to press the spacebar use 
+		      // the "press_space" command instead.
 
 Other Commands:
 wait(x)               // Wait for x amount of miliseconds (Identical to Sleep(x) used from Windows.h)
