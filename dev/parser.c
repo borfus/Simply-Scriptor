@@ -15,6 +15,7 @@ typedef struct
 command commands[] = 
 {
     fill_command(left_click),
+    fill_command(mouse_wheel_click),
     fill_command(right_click),
     fill_command(double_click),
     fill_command(left_click_hold),

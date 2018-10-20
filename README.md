@@ -19,6 +19,7 @@ Mouse Commands:
 move_mouse(x,y)		  // Top Left of screen is 0,0. Use Mouse Recorder to make this easier.
 scroll_wheel(x) 	  // Positive number scrolls up and negative number scrolls down.
 left_click
+mouse_wheel_click
 right_click
 double_click
 left_click_hold

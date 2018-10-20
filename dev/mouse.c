@@ -43,6 +43,20 @@ void setup_mouse_leftclick_up()
     mouse_input.mi.time = 0;
 }
 
+void setup_mouse_middleclick_down()
+{
+    mouse_input.mi.dwFlags = MOUSEEVENTF_MIDDLEDOWN;
+    mouse_input.type = INPUT_MOUSE;
+    mouse_input.mi.time = 0;
+}
+
+void setup_mouse_middleclick_up()
+{
+    mouse_input.mi.dwFlags = MOUSEEVENTF_MIDDLEUP;
+    mouse_input.type = INPUT_MOUSE;
+    mouse_input.mi.time = 0;
+}
+
 void setup_mouse_rightclick_down()
 {
     mouse_input.mi.dwFlags = MOUSEEVENTF_RIGHTDOWN;
@@ -101,6 +115,16 @@ void left_click()
     send_mouse_input();
     Sleep(20);
     setup_mouse_leftclick_up();
+    send_mouse_input();
+    Sleep(20);
+}
+
+void mouse_wheel_click()
+{
+    setup_mouse_middleclick_down();
+    send_mouse_input();
+    Sleep(20);
+    setup_mouse_middleclick_up();
     send_mouse_input();
     Sleep(20);
 }
