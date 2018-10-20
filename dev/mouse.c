@@ -43,14 +43,14 @@ void setup_mouse_leftclick_up()
     mouse_input.mi.time = 0;
 }
 
-void setup_mouse_middleclick_down()
+void setup_mouse_wheel_down()
 {
     mouse_input.mi.dwFlags = MOUSEEVENTF_MIDDLEDOWN;
     mouse_input.type = INPUT_MOUSE;
     mouse_input.mi.time = 0;
 }
 
-void setup_mouse_middleclick_up()
+void setup_mouse_wheel_up()
 {
     mouse_input.mi.dwFlags = MOUSEEVENTF_MIDDLEUP;
     mouse_input.type = INPUT_MOUSE;
