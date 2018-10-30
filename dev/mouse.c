@@ -121,11 +121,9 @@ void left_click()
 
 void mouse_wheel_click()
 {
-    setup_mouse_middleclick_down();
-    send_mouse_input();
+    setup_mouse_wheel_down();
     Sleep(20);
-    setup_mouse_middleclick_up();
-    send_mouse_input();
+    setup_mouse_wheel_up();
     Sleep(20);
 }
 

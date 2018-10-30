@@ -97,7 +97,6 @@ int check_command(char *command)
 //TODO: really ugly; refactor this
 void run_script(FILE *script_file)
 {
-    //TODO: type(x)
     //TODO: loop amount
     char line[32];
     while (fscanf(script_file, "%s\n", line) == 1)
