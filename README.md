@@ -11,6 +11,14 @@ Commands will be executed until the program doesn't recognize a command (through
 
 Simply Scriptor doesn't need to run through a command prompt or a bash shell to work, but if you want to see descriptive error text then you will still need to do so.
 
+## Building
+
+Simply use gcc:
+`gcc main.c mouse.c keyboard.c parser.c -o "Simply Scriptor"`
+
+Or if you prefer, CMake:
+`mkdir build && cd build && cmake .. && make`
+
 ## Commands
 
 ```
