@@ -81,6 +81,4 @@ wait(x)               // Wait for x amount of miliseconds (Identical to Sleep(x)
 
 ## Disclaimer
 
-I am not a senior programmer with 20+ years of experience. This program will probably have bugs! If you want to patiently submit bugs or make a pr, please feel free to do so!
-
 I do not condone cheating or any other malicious purpose this program might be used for. I am not responsible for your actions! Thank you!
